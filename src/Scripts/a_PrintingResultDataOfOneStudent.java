@@ -26,7 +26,8 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
     protected String CssSelectorIdForCGPA = "uclGrd1_lblCGPA";
     FileWriter outputFile;
 
-    public a_PrintingResultDataOfOneStudent() {
+    public a_PrintingResultDataOfOneStudent(String StudentId) {
+        this.StudentId = StudentId;
         Map<String, String> examDetails = new HashMap<>();
         examDetails.put("1","MARCH 2021");
         examDetails.put("2","JULY 2021");
@@ -79,8 +80,12 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
 
     }
 
+    public a_PrintingResultDataOfOneStudent() {
+        this("20CE054");
+    }
+
     public static void main(String[] args) {
-        new a_PrintingResultDataOfOneStudent();
+        new a_PrintingResultDataOfOneStudent("20CE115");
     }
 
 }
