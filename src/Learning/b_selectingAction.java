@@ -3,6 +3,11 @@ package Learning;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
+/**
+ * This clas extends default example, and it will
+ * show you that how you can user the selection action
+ * also, note that it is very basic demonstration.
+ * */
 public class b_selectingAction extends defaultExample {
 
     public b_selectingAction() {
@@ -27,7 +32,7 @@ public class b_selectingAction extends defaultExample {
         // finding element by id and clicking on it...
         driver.findElement(By.id("btnSearch")).click();
 
-        this.closeDriver();
+        this.waitAndCloseDriver();
     }
 
     public static void main(String[] args) {

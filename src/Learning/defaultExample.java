@@ -13,6 +13,11 @@ public abstract class defaultExample {
     public String SiteUrl;
     protected WebDriver driver;
 
+    /**
+     * This method will set up the web driver
+     * Since, it is default example, you can
+     * mention primary settings to be set over here.
+     * */
     public defaultExample()  {
         try {
             SiteUrl = GeneralHelper.getSiteUrl("CHARUSAT_RESULT");
@@ -29,7 +34,13 @@ public abstract class defaultExample {
         }
     }
 
-    public void closeDriver() {
+    /**
+     * This method will wait for user's input before
+     * closing and quiting the web driver. You can
+     * put and post script, post-processing stuff here
+     * in this method.
+     * */
+    public void waitAndCloseDriver() {
         // waiting for user input before closing...
         char c = new Scanner(System.in).next().charAt(0);
         driver.close();
