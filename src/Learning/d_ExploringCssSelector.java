@@ -13,6 +13,15 @@ public class d_ExploringCssSelector extends defaultExample {
     public d_ExploringCssSelector() {
         // loading the site...
         driver.get(SiteUrl);
+        /*
+          if it is id,
+          In css selector : use #
+          -> selection of unique element
+
+          if it is class,
+          In css selector use .
+          -> may be selection of multiple elements
+          */
         // creating anonymous object and selecting by visible text...
         new Select(this.driver.findElement(By.cssSelector("#ddlInst"))).selectByVisibleText("CSPIT");
         new Select(this.driver.findElement(By.cssSelector("#ddlDegree"))).selectByVisibleText("BTECH(CE)");
