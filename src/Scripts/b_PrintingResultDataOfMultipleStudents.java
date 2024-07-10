@@ -1,5 +1,15 @@
 package Scripts;
 
+/**
+ * This class will demonstrate the way we can collect result data of 
+ * multiple students, also, we'll see that how we can reuse the already
+ * existing scrip to create new scripts.
+ * <p> 
+ * Here, I have used {@code a_PrintResultDataOfOneStudent } class to
+ * collect data of multiple student in a looped manner.
+ * 
+ * @see a_PrintingResultDataOfOneStudent
+ * */
 public class b_PrintingResultDataOfMultipleStudents {
 
     public b_PrintingResultDataOfMultipleStudents(int StartId, int Count) {
