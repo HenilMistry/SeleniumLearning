@@ -4,11 +4,17 @@ public class b_PrintingResultDataOfMultipleStudents {
 
     public b_PrintingResultDataOfMultipleStudents(int StartId, int Count) {
 
-        for (int i=StartId; i<=StartId+Count; i++) {
+        a_PrintingResultDataOfOneStudent script = new a_PrintingResultDataOfOneStudent(this.formatStudentId(StartId));
+        script.doRun();
 
-            new a_PrintingResultDataOfOneStudent(this.formatStudentId(i)).closeDriver();
+        for (int i=StartId+1; i<=StartId+Count; i++) {
+
+            script.StudentId = this.formatStudentId(i);
+            script.doRun();
 
         }
+
+        script.closeDriver();
 
     }
 
