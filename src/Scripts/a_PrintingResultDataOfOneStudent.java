@@ -25,10 +25,11 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
     protected String StudentId = "20CE054";
     protected String CssSelectorIdForCGPA = "uclGrd1_lblCGPA";
     FileWriter outputFile;
+    protected Map<String, String> examDetails;
 
     public a_PrintingResultDataOfOneStudent(String StudentId) {
         this.StudentId = StudentId;
-        Map<String, String> examDetails = new HashMap<>();
+        this.examDetails = new HashMap<>();
         examDetails.put("1","MARCH 2021");
         examDetails.put("2","JULY 2021");
         examDetails.put("3","NOVEMBER 2021");
@@ -43,7 +44,16 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    /**
+     * This method contains the core function/script for this example
+     * which can be reused in later classes or scripts.
+     *
+     * @see b_PrintingResultDataOfMultipleStudents
+     * @param read would you like to read data for one student ?
+     * */
+    public void doRun(boolean read) {
         // loading the site...
         this.driver.get(this.SiteUrl);
         try {
@@ -64,7 +74,9 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
                 WebElement element = explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.id(this.CssSelectorIdForCGPA)));
                 if (element.isDisplayed()) {
                     System.out.println("Element has been located and displayed, data read for semester : "+ semester +"  --> CGPA="+element.getText());
-                    this.outputFile.append(semester).append(",").append(element.getText()).append("\n");
+                    if (read) {
+                        this.outputFile.append(semester).append(",").append(element.getText()).append("\n");
+                    }
                 } else {
                     System.out.println("Something went wrong!");
                 }
@@ -78,6 +90,18 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
         }
     }
 
+    public void doRun() {
+        this.doRun(false);
+    }
+
+    public void setStudentId(String StudentId) {
+        this.StudentId = StudentId;
+    }
+
+    public String getStudentId() {
+        return this.StudentId;
+    }
+
     public void closeDriver() {
         this.driver.close();
         this.driver.quit();
@@ -88,7 +112,9 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
     }
 
     public static void main(String[] args) {
-        new a_PrintingResultDataOfOneStudent("20CE115").waitAndCloseDriver();
+        a_PrintingResultDataOfOneStudent script =  new a_PrintingResultDataOfOneStudent();
+        script.doRun(true);
+        script.waitAndCloseDriver();
     }
 
 }
