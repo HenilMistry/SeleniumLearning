@@ -76,8 +76,11 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        this.waitAndCloseDriver();
+    }
 
+    public void closeDriver() {
+        this.driver.close();
+        this.driver.quit();
     }
 
     public a_PrintingResultDataOfOneStudent() {
@@ -85,7 +88,7 @@ public class a_PrintingResultDataOfOneStudent extends defaultScriptSetup {
     }
 
     public static void main(String[] args) {
-        new a_PrintingResultDataOfOneStudent("20CE115");
+        new a_PrintingResultDataOfOneStudent("20CE115").waitAndCloseDriver();
     }
 
 }
